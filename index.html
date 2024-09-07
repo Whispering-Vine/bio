@@ -9,7 +9,7 @@
         :root {
             --primary-color: #000000;
             --secondary-color: #2c2c2e;
-            --accent-color: #0a84ff;
+            --accent-color: #bcbcbc;
             --text-color: #ffffff;
             --hover-color: rgba(26, 26, 26);
         }
@@ -171,17 +171,25 @@
             border-radius: 12px;
             overflow: hidden;
             transition: background-color 0.2s ease;
+            height: 56px;
+            position: relative;
         }
         .newsletter-container:hover {
             background-color: var(--hover-color);
         }
+        .newsletter-container.focused {
+            box-shadow: inset 0 0 0 2px var(--accent-color);
+        }
         .newsletter-form {
             display: flex;
             align-items: center;
+            height: 56px;
+            position: relative;
         }
         .newsletter-icon {
             padding: 16px 0 16px 20px;
             height: 24px;
+            z-index: 1;
         }
         .newsletter-icon img {
             width: 24px;
@@ -196,9 +204,14 @@
             padding: 16px 12px;
             font-size: 16px;
             font-family: 'Montserrat', sans-serif;
+            outline: none;
+            position: relative;
+            z-index: 1;
+            transition: all 0.5s ease;
         }
         .newsletter-input::placeholder {
             color: rgba(255, 255, 255, 0.7);
+            transition: opacity 0.5s ease;
         }
         .newsletter-button {
             background: none;
@@ -208,10 +221,25 @@
             padding: 16px;
             cursor: pointer;
             opacity: 0.7;
-            transition: opacity 0.2s ease;
+            transition: opacity 0.5s ease;
         }
         .newsletter-button:hover {
             opacity: 1;
+        }
+        .subscription-message {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .subscription-message.show {
+            opacity: 1;
+            transform: translateX(0);
         }
     </style>
 </head>
@@ -307,15 +335,16 @@
         </div>
         <!-- Newsletter Sign-Up Form -->
         <div class="newsletter-container">
-            <form action="https://whisperingvinewine.us22.list-manage.com/subscribe/post?u=841ac5f1d95f2aff901de9613&amp;id=bea241e703" method="POST" class="newsletter-form">
+            <form id="newsletter-form" action="https://whisperingvinewine.us22.list-manage.com/subscribe/post?u=841ac5f1d95f2aff901de9613&amp;id=bea241e703" method="POST" class="newsletter-form">
                 <input type="hidden" name="id" value="bea241e703">
                 <input type="hidden" name="u" value="841ac5f1d95f2aff901de9613">
                 <div class="newsletter-icon">
                     <img src="img/email.svg" alt="Email icon">
                 </div>
-                <input type="email" name="MERGE0" placeholder="Enter your email" aria-label="Newsletter Email" required class="newsletter-input">
+                <input type="email" name="MERGE0" placeholder="Sign up for exclusive deals!" aria-label="Newsletter Email" required class="newsletter-input">
                 <button type="submit" class="newsletter-button" aria-label="Sign up for newsletter">→</button>
             </form>
+            <div class="subscription-message">Thanks for Subscribing!</div>
         </div>
     </div>
     
@@ -339,6 +368,54 @@
         function toggleDropdown(container) {
             container.classList.toggle('active');
         }
+
+        const newsletterInput = document.querySelector('.newsletter-input');
+        const newsletterContainer = document.querySelector('.newsletter-container');
+
+        newsletterInput.addEventListener('focus', function() {
+            this.placeholder = 'Enter your email';
+            newsletterContainer.classList.add('focused');
+        });
+
+        newsletterInput.addEventListener('blur', function() {
+            this.placeholder = 'Sign up for exclusive deals!';
+            newsletterContainer.classList.remove('focused');
+        });
+
+        // Updated function for handling the newsletter form submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the form from submitting normally
+
+            var form = this;
+            var url = form.action;
+            var formData = new FormData(form);
+            var container = form.closest('.newsletter-container');
+            var message = container.querySelector('.subscription-message');
+
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors' // This is necessary for cross-origin requests to Mailchimp
+            })
+            .then(response => {
+                // Since we're using 'no-cors', we can't access the response content
+                // We'll just assume it was successful
+                form.style.display = 'none';
+                message.classList.add('show');
+                
+                setTimeout(() => {
+                    message.classList.remove('show');
+                    setTimeout(() => {
+                        form.style.display = 'flex';
+                        form.reset(); // Clear the form
+                    }, 300); // Wait for fade out animation to complete
+                }, 3000); // Show message for 3 seconds
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error. Please try again later.');
+            });
+        });
     </script>
 </body>
 </html>
