@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whispering Vine Wine Co.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #2c2c2e;
+            --accent-color: #0a84ff;
+            --text-color: #ffffff;
+            --hover-color: rgba(26, 26, 26);
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 24px;
+            border-radius: 30%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-family: 'Abhaya Libre', serif;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .social-icons a {
+            color: var(--text-color);
+            font-size: 24px;
+            transition: transform 0.2s ease;
+        }
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+        .links {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 400px;
+            gap: 16px;
+        }
+        .link-container {
+            display: flex;
+            align-items: stretch;
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: background-color 0.2s ease;
+        }
+        .link-container:hover {
+            background-color: var(--hover-color);
+        }
+        .link {
+            flex-grow: 1;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        .link img {
+            width: 24px;
+            height: 24px;
+            margin-right: 16px;
+            filter: brightness(0) saturate(100%) invert(100%);
+        }
+        .icon img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) saturate(100%) invert(100%);
+        }
+        .share-button {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 20px;
+            padding: 16px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        .share-button:hover {
+            opacity: 1;
+        }
+        .dropdown-container {
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            max-height: 56px;
+        }
+        .dropdown-container.active {
+            max-height: 200px;
+        }
+        .dropdown-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            cursor: pointer;
+        }
+        .dropdown-header span {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+        .dropdown-header img {
+            width: 24px;
+            height: 24px;
+            margin-right: 16px;
+            filter: brightness(0) saturate(100%) invert(100%);
+        }
+        .dropdown-arrow {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+            margin-right: -5px !important;
+        }
+        .dropdown-container.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        .dropdown-content {
+            display: none;
+            flex-direction: column;
+        }
+        .dropdown-container.active .dropdown-content {
+            display: flex;
+            background-color: #121212;
+        }
+        .dropdown-link {
+            padding: 12px 20px 12px 60px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+        .dropdown-link:hover {
+            background-color: var(--hover-color);
+        }
+        .dropdown-content .link-container {
+            background-color: #121212;
+        }
+        .dropdown-content .link-container:hover {
+            background-color: var(--hover-color);
+        }
+    </style>
+</head>
+<body>
+    <img src="webclip.png" alt="Whispering Vine Wine Co. Logo" class="logo">
+    <h1>Whispering Vine <br> Wine Co.</h1>
+    <div class="social-icons">
+        <a href="https://www.instagram.com/whisperingvine" class="icon" aria-label="Instagram"><img src="instagram.svg" alt="Instagram icon"></a>
+        <a href="https://www.facebook.com/whisperingvine" class="icon" aria-label="Facebook"><img src="facebook.svg" alt="Facebook icon"></a>
+        <a href="https://twitter.com/whisperingvine" class="icon" aria-label="Twitter"><img src="twitterx.svg" alt="Twitter icon"></a>
+        <a href="https://tiktok.com/@whisperingvinewineco" class="icon" aria-label="TikTok"><img src="tiktok.svg" alt="TikTok icon"></a>
+        <a href="#" class="icon" aria-label="Google Reviews"><img src="google-logo.svg" alt="Google Reviews icon"></a>
+        <a href="#" class="icon" aria-label="Yelp"><img src="yelp.svg" alt="Yelp icon"></a>
+    </div>
+    <div class="links">
+        <div class="link-container">
+            <a href="https://wvwine.co/menu" class="link">
+                <img src="menu.svg" alt="Menu icon">
+                <span>Food Menu</span>
+            </a>
+            <button class="share-button" aria-label="Share Food Menu" onclick="share(event, 'Food Menu', this.previousElementSibling.href)">⋯</button>
+        </div>
+        <div class="link-container">
+            <a href="#" class="link">
+                <img src="reserve.svg" alt="Reserve icon">
+                <span>Reserve a Table</span>
+            </a>
+            <button class="share-button" aria-label="Share Reserve a Table" onclick="share(event, 'Reserve a Table', this.previousElementSibling.href)">⋯</button>
+        </div>
+        <div class="link-container">
+            <a href="#" class="link">
+                <img src="wine.svg" alt="Wine icon">
+                <span>Wine Selection</span>
+            </a>
+            <button class="share-button" aria-label="Share Wine Selection" onclick="share(event, 'Wine Selection', this.previousElementSibling.href)">⋯</button>
+        </div>
+        <div class="dropdown-container">
+            <div class="dropdown-header" onclick="toggleDropdown(this.parentElement)">
+                <span>
+                    <img src="south-creek.svg" alt="Location icon">
+                    South Creek
+                </span>
+                <img src="arrow-down.svg" alt="Dropdown arrow" class="dropdown-arrow">
+            </div>
+            <div class="dropdown-content">
+                <div class="link-container">
+                    <a href="#" class="link">
+                        <img src="directions.svg" alt="Directions icon">
+                        <span>Directions</span>
+                    </a>
+                    <button class="share-button" aria-label="Share Directions to South Creek" onclick="share(event, 'Directions to South Creek', this.previousElementSibling.href)">⋯</button>
+                </div>
+                <div class="link-container">
+                    <a href="tel:+11234567890" class="link">
+                        <img src="phone.svg" alt="Phone icon">
+                        <span>Call</span>
+                    </a>
+                    <button class="share-button" aria-label="Share Call South Creek" onclick="share(event, 'Call South Creek', this.previousElementSibling.href)">⋯</button>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown-container">
+            <div class="dropdown-header" onclick="toggleDropdown(this.parentElement)">
+                <span>
+                    <img src="fourth.svg" alt="Location icon">
+                    Fourth St.
+                </span>
+                <img src="arrow-down.svg" alt="Dropdown arrow" class="dropdown-arrow">
+            </div>
+            <div class="dropdown-content">
+                <div class="link-container">
+                    <a href="#" class="link">
+                        <img src="directions.svg" alt="Directions icon">
+                        <span>Directions</span>
+                    </a>
+                    <button class="share-button" aria-label="Share Directions to Fourth St." onclick="share(event, 'Directions to Fourth St.', this.previousElementSibling.href)">⋯</button>
+                </div>
+                <div class="link-container">
+                    <a href="tel:+10987654321" class="link">
+                        <img src="phone.svg" alt="Phone icon">
+                        <span>Call</span>
+                    </a>
+                    <button class="share-button" aria-label="Share Call Fourth St." onclick="share(event, 'Call Fourth St.', this.previousElementSibling.href)">⋯</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function share(event, title, url) {
+            event.preventDefault();
+            if (navigator.share) {
+                navigator.share({
+                    title: title,
+                    url: url
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                }).catch(console.error);
+            } else {
+                // Fallback for browsers that don't support the Web Share API
+                alert('Share functionality is not supported on this device.');
+            }
+        }
+
+        function toggleDropdown(container) {
+            container.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
