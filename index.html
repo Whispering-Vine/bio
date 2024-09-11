@@ -250,6 +250,33 @@
             opacity: 1;
             transform: translateX(0);
         }
+        .call-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .call-button:hover {
+            transform: scale(1.1);
+        }
+
+        .call-button img {
+            width: 30px;
+            height: 30px;
+            filter: brightness(0) saturate(100%) invert(100%);
+        }
     </style>
 </head>
 <body>
@@ -354,7 +381,9 @@
             <div class="subscription-message">Thanks for Subscribing!</div>
         </div>
     </div>
-    
+    <a href="tel:+17757879463" class="call-button" aria-label="Call Whispering Vine Wine Co.">
+        <img src="img/phone.svg" alt="Phone icon">
+    </a>
 
     <script>
         function share(event, title, url) {
