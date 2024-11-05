@@ -122,11 +122,11 @@
                 Call Us
             </button>
             <button class="popup-action-button" data-location="Fourth St">
-                <span class="status-indicator"></span>
+                <span class="popup-status-indicator"></span>
                 Fourth St: Open
             </button>
             <button class="popup-action-button" data-location="SouthCreek">
-                <span class="status-indicator"></span>
+                <span class="popup-status-indicator"></span>
                 SouthCreek: Open
             </button>
         `;
