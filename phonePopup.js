@@ -125,9 +125,9 @@
                 <span class="popup-status-indicator"></span>
                 Fourth St: Open
             </button>
-            <button class="popup-action-button" data-location="SouthCreek">
+            <button class="popup-action-button" data-location="South Creek">
                 <span class="popup-status-indicator"></span>
-                SouthCreek: Open
+                South Creek: Open
             </button>
         `;
     
@@ -204,7 +204,7 @@
 
     const popupLocationMapping = {
         'Fourth St': 'fourth',
-        'SouthCreek': 'foothill'
+        'South Creek': 'foothill'
     };
 
     async function fetchPopupHoursData() {
@@ -289,7 +289,7 @@
                 e.stopPropagation();
                 if (button.dataset.location === 'Fourth St') {
                     window.location.href = 'https://maps.apple.com/?address=4201%20W%20Fourth%20St,%20Reno,%20NV%20%2089523,%20United%20States&auid=10910040195340338537&ll=39.514067,-119.854427&lsp=9902&q=Whispering%20Vine%20Wine%20Co.';
-                } else if (button.dataset.location === 'SouthCreek') {
+                } else if (button.dataset.location === 'South Creek') {
                     window.location.href = 'https://maps.apple.com/?address=85%20Foothill%20Rd,%20Ste%201,%20Reno,%20NV%20%2089511,%20United%20States&auid=5244288323040263719&ll=39.438890,-119.770943&lsp=9902&q=Whispering%20Vine%20Wine%20Co.';
                 }
             });
