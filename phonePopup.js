@@ -60,7 +60,7 @@
             align-items: center;
             gap: 10px;
             opacity: 0;
-            transform: translateX(100%);
+            transform: translateX(200%);
         }
 
         .popup-action-button:hover {
@@ -163,7 +163,7 @@
         buttons.forEach((button, index) => {
             setTimeout(() => {
                 button.style.opacity = '0';
-                button.style.transform = 'translateX(100%)';
+                button.style.transform = 'translateX(200%)';
             }, index * 100);
         });
     }
