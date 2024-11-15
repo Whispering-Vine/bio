@@ -136,37 +136,39 @@
     document.body.appendChild(actionButtons);
 
     // Toggle button state with staggered animation
-    function openPopupButtons() {
-        const storeIcon = mainButton.querySelector('.popup-store-icon');
-        const closeIcon = mainButton.querySelector('.popup-close-icon');
-        const buttons = Array.from(actionButtons.querySelectorAll('.popup-action-button'));
-        
-        storeIcon.style.display = 'none';
-        closeIcon.style.display = 'block';
-        
-        buttons.reverse().forEach((button, index) => {
-            setTimeout(() => {
-                button.style.opacity = '1';
-                button.style.transform = 'translateX(0)';
-            }, index * 100);
-        });
-    }
+function openPopupButtons() {
+    const storeIcon = mainButton.querySelector('.popup-store-icon');
+    const closeIcon = mainButton.querySelector('.popup-close-icon');
+    const buttons = Array.from(actionButtons.querySelectorAll('.popup-action-button'));
+    
+    storeIcon.style.display = 'none';
+    closeIcon.style.display = 'block';
+    actionButtons.style.pointerEvents = 'auto'; // Enable pointer events
 
-    function closePopupButtons() {
-        const storeIcon = mainButton.querySelector('.popup-store-icon');
-        const closeIcon = mainButton.querySelector('.popup-close-icon');
-        const buttons = Array.from(actionButtons.querySelectorAll('.popup-action-button'));
-        
-        storeIcon.style.display = 'block';
-        closeIcon.style.display = 'none';
-        
-        buttons.forEach((button, index) => {
-            setTimeout(() => {
-                button.style.opacity = '0';
-                button.style.transform = 'translateX(200%)';
-            }, index * 100);
-        });
-    }
+    buttons.reverse().forEach((button, index) => {
+        setTimeout(() => {
+            button.style.opacity = '1';
+            button.style.transform = 'translateX(0)';
+        }, index * 100);
+    });
+}
+
+function closePopupButtons() {
+    const storeIcon = mainButton.querySelector('.popup-store-icon');
+    const closeIcon = mainButton.querySelector('.popup-close-icon');
+    const buttons = Array.from(actionButtons.querySelectorAll('.popup-action-button'));
+    
+    storeIcon.style.display = 'block';
+    closeIcon.style.display = 'none';
+    actionButtons.style.pointerEvents = 'none'; // Disable pointer events
+
+    buttons.forEach((button, index) => {
+        setTimeout(() => {
+            button.style.opacity = '0';
+            button.style.transform = 'translateX(200%)';
+        }, index * 100);
+    });
+
 
     let isOpen = false;
     mainButton.addEventListener('click', () => {
