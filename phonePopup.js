@@ -168,7 +168,7 @@ function closePopupButtons() {
             button.style.transform = 'translateX(200%)';
         }, index * 100);
     });
-
+}
 
     let isOpen = false;
     mainButton.addEventListener('click', () => {
