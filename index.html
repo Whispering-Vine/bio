@@ -25,15 +25,19 @@
         }
 
         :root {
-            --primary-color: #000000;
-            --secondary-color: #2c2c2e;
+            --primary-color: rgba(0, 0, 0, 0.3);
+            --secondary-color: rgba(44, 44, 46, 0.7);
             --accent-color: #bcbcbc;
             --text-color: #ffffff;
-            --hover-color: rgba(26, 26, 26);
+            --hover-color: rgba(26, 26, 26, 0.8);
         }
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--primary-color);
+            background-image: url('bg.jpg');
+            background-size: cover;
+            background-position: bottom;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             color: var(--text-color);
             display: flex;
             flex-direction: column;
@@ -46,8 +50,10 @@
             width: 120px;
             height: 120px;
             margin-bottom: 24px;
-            border-radius: 30%;
+            border-radius: 20%;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: black;
+            padding: 5px;
         }
         h1 {
             font-family: 'Trajan Pro', serif;
@@ -56,6 +62,7 @@
             margin-bottom: 24px;
             text-transform: uppercase;
             text-align: center;
+            color: black;
         }
         .social-icons {
             display: flex;
@@ -85,6 +92,8 @@
             border-radius: 12px;
             overflow: hidden;
             transition: background-color 0.2s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .link-container:hover {
             background-color: var(--hover-color);
@@ -107,7 +116,7 @@
         .icon img {
             width: 32px;
             height: 32px;
-            filter: brightness(0) saturate(100%) invert(100%);
+            filter: brightness(0) saturate(100%) invert(0%);
         }
         .share-button {
             background: none;
@@ -128,6 +137,8 @@
             overflow: hidden;
             transition: max-height 0.3s ease;
             max-height: 56px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .dropdown-container.active {
             max-height: 200px;
@@ -165,7 +176,8 @@
         }
         .dropdown-container.active .dropdown-content {
             display: flex;
-            background-color: #121212;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .dropdown-link {
             padding: 12px 20px 12px 60px;
@@ -178,7 +190,9 @@
             background-color: var(--hover-color);
         }
         .dropdown-content .link-container {
-            background-color: #121212;
+            background-color: rgba(18, 18, 18, 0.0);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .dropdown-content .link-container:hover {
             background-color: var(--hover-color);
@@ -192,6 +206,8 @@
             height: 56px;
             position: relative;
             margin-bottom: 56px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .newsletter-container:hover {
             background-color: var(--hover-color);
@@ -267,7 +283,7 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background-color: #2c2c2e50;
+            background-color: rgba(44, 44, 46, 0.5);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -334,7 +350,7 @@
                 <img src="img/wine.svg" alt="Wine icon">
                 <span>Wines of the Week</span>
             </a>
-            <button class="share-button" aria-label="Share Wines of the Week" onclick="share(event, Wine of the Week', this.previousElementSibling.href)">⋯</button>
+            <button class="share-button" aria-label="Share Wines of the Week" onclick="share(event, 'Wine of the Week', this.previousElementSibling.href)">⋯</button>
         </div>
         <div class="dropdown-container">
             <div class="dropdown-header" onclick="toggleDropdown(this.parentElement)">
